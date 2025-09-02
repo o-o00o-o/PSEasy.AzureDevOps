@@ -1,0 +1,21 @@
+{
+    "Manifest": {
+        "Guid": "04dabf3f-0eb5-4ca5-a96b-4c66759a46d7",
+        "Author": "Brett Gerhardi",
+        "Description": "Helpers to automate Azure DevOps tasks",
+        "RequiredModules": [
+            "PSEasy.Utility"
+        ],
+        "ProjectURI": "https://github.com/o-o00o-o/PSEasy.AzureDevOps",
+        "Tags": "PSEdition_Core"
+    },
+    "File": {
+        "FileSpec": "*-*.ps1",
+        "ExcludeSpec": [
+            "*.Tests.ps1",
+            "--*.ps1"
+        ],
+        /* "PublicOnlyIfIndicated" or "'PublicByDefault" */
+        "ExportMode": "PublicByDefault"
+    }
+}
