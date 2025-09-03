@@ -87,16 +87,6 @@ Install-Module PSEasy.Module
     ```
 
     then use this safely with
-    # Publish-Module -path ..\..\PSEasy\PSEasy.Utility\PSEasy.AzureDevOps\ -Verbose -NuGetApiKey (Get-PsEasyNuGetApiKey) -Whatif
+    # Publish-Module -path ..\..\PSEasy\PSEasy.AzureDevOps\PSEasy.AzureDevOps\ -Verbose -NuGetApiKey (Get-PsEasyNuGetApiKey) -Whatif
     # then run without whatif if no errors
     ```
-
-## Notes for working on this library
-
-Of course there is a bit of a chicken and egg problem using Build-Module for this module if you are changing the code in Build-Module
-
-To workaround that use
-
-``` powershell
-. src\module\Lifecycle\Import-ModuleFunction
-```

@@ -54,7 +54,7 @@ Function Invoke-AdoRestMethod {
         [Parameter(Mandatory)]
         [string]$ApiVersion,
         [Parameter()]
-        [string]$Body,
+        [PSCustomObject]$Body,
         [Parameter(Mandatory)]
         [ValidateSet('GET', 'HEAD', 'PUT', 'POST', 'PATCH')]
         [string]$RestMethod,
@@ -108,7 +108,11 @@ Function Invoke-AdoRestMethod {
         Method      = $RestMethod
         ContentType = $ContentType
         Headers     = $headers
-        Body        = $Body
+    }
+
+    if ($Body) {
+        $restMethodArgs.Body = $Body | ConvertTo-Json
+        Write-Debug $restMethodArgs.Body
     }
 
     # Invoke the REST call and capture the results (notice this uses the PATCH method)
