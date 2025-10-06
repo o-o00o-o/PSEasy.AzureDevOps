@@ -80,9 +80,15 @@ function Set-AzureDevopsTemplate {
                 if ($template.PSObject.Properties['parentWorkItemTypes']) {
                     $Ordinal = [string]::Format("{0:00}", $i++)
                     $item | Add-Member TemplateItemName "$($template.Name) . $Ordinal . $($item.Name)"
-                    $item | Add-Member TemplateItemDescription "[$([string]::Join(',', $template.parentWorkItemTypes))]"
+                    if ($item.PSObject.Properties['parentWorkItemTypes']) { ## item overrides template
+                        $item | Add-Member TemplateItemDescription "[$([string]::Join(',', $item.parentWorkItemTypes))]"
+                    }
+                    else {
+                        $item | Add-Member TemplateItemDescription "[$([string]::Join(',', $template.parentWorkItemTypes))]"
+                    }
                 }
                 else {
+                    # if template doesn't have parentWorkItemTypes then we mark as ignored so that 1-click doesn't pick it up (in-place vs children type)
                     $item | Add-Member TemplateItemName "$($template.Name) . $($item.Name)"
                     $item | Add-Member TemplateItemDescription "[ignore] $($item.notes)"
                 }
