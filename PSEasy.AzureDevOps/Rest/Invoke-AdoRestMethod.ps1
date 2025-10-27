@@ -56,7 +56,7 @@ Function Invoke-AdoRestMethod {
         [Parameter()]
         [PSCustomObject]$Body,
         [Parameter(Mandatory)]
-        [ValidateSet('GET', 'HEAD', 'PUT', 'POST', 'PATCH')]
+        [ValidateSet('GET', 'HEAD', 'PUT', 'POST', 'PATCH', 'DELETE', 'TRACE', 'OPTIONS', 'CONNECT')]
         [string]$RestMethod,
         [Parameter()]
         [string]$ContentType = 'application/json'
